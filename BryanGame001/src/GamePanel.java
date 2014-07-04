@@ -11,11 +11,13 @@ public class GamePanel extends JPanel {
 	private Game game = new Game();
 
 	public GamePanel() {
-		game.init();
+		game.init(); // 初始化遊戲
+
+		// 每 10 毫秒執行
 		new Timer(10, new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				game.update();
-				repaint();
+				game.update(); // 做遊戲邏輯運算
+				repaint(); // 視窗畫面重畫
 			}
 		}).start();
 	}
@@ -23,13 +25,13 @@ public class GamePanel extends JPanel {
 	@Override
 	protected void processKeyEvent(KeyEvent e) {
 		super.processKeyEvent(e);
-		game.onKeyEvent(e);
+		game.onKeyEvent(e); // 偵測鍵盤事件
 	}
 
 	@Override
 	public void paint(Graphics g) {
 		super.paint(g);
-		game.draw(g);
+		game.draw(g); // 繪製遊戲畫面
 	}
 
 }
